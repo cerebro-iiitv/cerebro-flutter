@@ -8,7 +8,7 @@
 </a>
 </p>
 <hr>
-<h4 align="center">A native application of Cerebro for Android and iOS</h4>
+<h4 align="center">A native application of Cerebro for <img src="https://freeiconshop.com/wp-content/uploads/edd/android-flat.png" width="25" align="center"> and <img src="https://img.icons8.com/color/1600/ios-logo.png" width="30" align="center"> with goodness of <img src="https://cdn-images-1.medium.com/max/1200/1*R4c8lHBHuH5qyqOtZb3h-w.png" width="25" align="center"></h4>
 
 ## Getting Started
 

@@ -2,9 +2,11 @@
 <h1 align="center">cerebro-flutter</h1>
 
 <p align="center">
-<a>
-    <img src="https://forthebadge.com/images/badges/built-by-developers.svg" align="center">
+<a href="https://travis-ci.org/cerebro-iiitv/cerebro-flutter">
+    <img src="https://img.shields.io/travis/cerebro-iiitv/cerebro-flutter/master.svg?style=for-the-badge" align="center">
 </a>
+<a href="https://github.com/cerebro-iiitv/cerebro-flutter/issues">
+    <img src="https://img.shields.io/github/issues/cerebro-iiitv/cerebro-flutter.svg?style=for-the-badge" align="center">
 </a>
 </p>
 <hr>

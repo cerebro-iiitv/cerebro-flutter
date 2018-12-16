@@ -1,0 +1,178 @@
+{
+  "project_info": {
+    "project_number": "1059299836137",
+    "firebase_url": "https://cerebro-2018-f1052.firebaseio.com",
+    "project_id": "cerebro-2018-f1052",
+    "storage_bucket": "cerebro-2018-f1052.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059299836137:android:ac80a7c4c495aa4a",
+        "android_client_info": {
+          "package_name": "com.example.cerebroflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059299836137-41pce639hfl79rmlrfluaamkcjrpbqsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnzTsGbYyE71zlwM2-hXVxig1xfCyB6Ec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059299836137:android:6f314f4765ad42df",
+        "android_client_info": {
+          "package_name": "com.example.yash.cerebro_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059299836137-ere9dodm65a3l5bt90o6o2s7pstjba2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yash.cerebro_android",
+            "certificate_hash": "8102582adf3f0d04219366e0a15a13187cbaa29f"
+          }
+        },
+        {
+          "client_id": "1059299836137-8hf5cl3c6j7r1km2r0r3cbrog2boati8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yash.cerebro_android",
+            "certificate_hash": "644b945c3813b1bec7c6e1dca81d0bd8a05af6a5"
+          }
+        },
+        {
+          "client_id": "1059299836137-fhog9cd4g5ncs3vfru3imb82flfo0m1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yash.cerebro_android",
+            "certificate_hash": "2ad4b84d0ddf0eed20beeec8e708c35606e19d2c"
+          }
+        },
+        {
+          "client_id": "1059299836137-41pce639hfl79rmlrfluaamkcjrpbqsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnzTsGbYyE71zlwM2-hXVxig1xfCyB6Ec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059299836137-41pce639hfl79rmlrfluaamkcjrpbqsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059299836137:android:d1ada98abff1de62",
+        "android_client_info": {
+          "package_name": "in.ac.iiitvadodara.cerebro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059299836137-glghq67josgvvr5v31e5bu03jhuq26fg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ac.iiitvadodara.cerebro",
+            "certificate_hash": "d914fc16516288ef58fef6ce1e14e6ee868784e5"
+          }
+        },
+        {
+          "client_id": "1059299836137-bk5p82oqvnonhdh8307pggv6inqgcted.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ac.iiitvadodara.cerebro",
+            "certificate_hash": "2ad4b84d0ddf0eed20beeec8e708c35606e19d2c"
+          }
+        },
+        {
+          "client_id": "1059299836137-9t7qtm9apgfdsj8ul3i96jdqa6mgp4hj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ac.iiitvadodara.cerebro",
+            "certificate_hash": "1b8b87a64e7271648aa435f4002057cea5d7b49b"
+          }
+        },
+        {
+          "client_id": "1059299836137-djeq8rqotok56bqgja9blr7st1jp1f0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ac.iiitvadodara.cerebro",
+            "certificate_hash": "8102582adf3f0d04219366e0a15a13187cbaa29f"
+          }
+        },
+        {
+          "client_id": "1059299836137-e349d8uoqtc03mamagg4j1krlnm999jc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.ac.iiitvadodara.cerebro",
+            "certificate_hash": "644b945c3813b1bec7c6e1dca81d0bd8a05af6a5"
+          }
+        },
+        {
+          "client_id": "1059299836137-41pce639hfl79rmlrfluaamkcjrpbqsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnzTsGbYyE71zlwM2-hXVxig1xfCyB6Ec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059299836137-41pce639hfl79rmlrfluaamkcjrpbqsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
-import 'package:cerebro_flutter/main.dart';
+import 'package:cerebro_flutter/models/record.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventsPage extends StatefulWidget {
   @override
@@ -13,57 +14,64 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Event List')),
+      appBar: AppBar(title: Text('Events List')),
       body: _buildBody(context),
     );
   }
 
   Widget _buildBody(BuildContext context) {
-    return _buildList(context, dummySnapshot);
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('events').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return LinearProgressIndicator();
+        return _buildList(context, snapshot.data.documents);
+      },
+    );
   }
 
-  Widget _buildList(BuildContext context, List<Map> snapshot) {
+  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
     return ListView(
       padding: const EdgeInsets.only(top: 20.0),
       children: snapshot.map((data) => _buildListItem(context, data)).toList(),
     );
   }
 
-  Widget _buildListItem(BuildContext context, Map data) {
-    final record = Record.fromMap(data);
+  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+    final _event = Event.fromSnapshot(data);
+
+    String _date(DateTime timestamp) {
+      return DateFormat.jm().add_yMMMd().format(timestamp);
+    }
 
     return Padding(
-      key: ValueKey(record.name),
+      key: ValueKey(_event.id),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: ListTile(
-          title: Text(record.name),
-          trailing: Text(record.fee.toString()),
-          onTap: () => print(record),
+        child: Card(
+          elevation: 5.0,
+          child: ListTile(
+            leading: Image.network(
+              _event.img,
+              width: 60,
+              height: 60,
+            ),
+            title: Text(
+              _event.name,
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange),
+            ),
+            subtitle: Text(_date(_event.date)),
+            trailing: IconButton(
+              icon: Icon(Icons.add_circle_outline),
+              iconSize: 30.0,
+              onPressed: () => print('Register for ${_event.name}'),
+            ),
+            onTap: () => print(_event),
+          ),
         ),
       ),
     );
   }
-}
-
-class Record {
-  final String name;
-  final int fee;
-  final DocumentReference reference;
-
-  Record.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['name'] != null),
-        assert(map['fee'] != null),
-        name = map['name'],
-        fee = map['fee'];
-
-  Record.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
-
-  @override
-  String toString() => "Record<$name:$fee>";
 }

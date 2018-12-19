@@ -64,14 +64,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        SizedBox(
-          height: 100.0,
-        ),
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 120.0,
             horizontal: 50.0,
           ),
+          alignment: Alignment.topCenter,
           child: Image(
             image: AssetImage('assets/images/fest-logo.png'),
             height: 150,

@@ -1,4 +1,5 @@
 import 'package:cerebro_flutter/screens/events.dart';
+import 'package:cerebro_flutter/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -12,7 +13,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return new SplashScreen(
         seconds: 7,
-        navigateAfterSeconds: EventsPage(),
+        navigateAfterSeconds: LoginPage(),
         title: Text(
           'Just wait a little longer...',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),

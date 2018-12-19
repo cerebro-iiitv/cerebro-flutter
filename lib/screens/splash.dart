@@ -1,4 +1,3 @@
-import 'package:cerebro_flutter/screens/events.dart';
 import 'package:cerebro_flutter/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';

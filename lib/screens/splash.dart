@@ -1,5 +1,7 @@
 import 'package:cerebro_flutter/screens/login.dart';
+import 'package:cerebro_flutter/screens/events.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class Splash extends StatefulWidget {
@@ -8,11 +10,33 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  final String _kUserPref = "UserPref";
+  Widget _routingWidget = LoginPage();
+
+  Future<Null> getSharedPref() async {
+    final SharedPreferences _localPref = await SharedPreferences.getInstance();
+    String userProfile = _localPref.getString(_kUserPref);
+    // Check if user is already saved in Shared Preference then move to Events Page
+    // and not to LoginPage
+    if (userProfile != null) {
+      print('Already present user: ' + userProfile);
+      setState(() {
+        _routingWidget = EventsPage();
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSharedPref();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
         seconds: 7,
-        navigateAfterSeconds: LoginPage(),
+        navigateAfterSeconds: _routingWidget,
         title: Text(
           'Just wait a little longer...',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),

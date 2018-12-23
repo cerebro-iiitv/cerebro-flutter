@@ -15,9 +15,19 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final String _kUserPref = "UserPref";
 
+  Future<Null> getSharedPref() async {
+    final SharedPreferences _localPref = await SharedPreferences.getInstance();
+    String userProfile = _localPref.getString(_kUserPref);
+    if (userProfile != null) {
+      print('Already present user: ' + userProfile);
+      Navigator.pushNamed(context, '/events');
+    }
+  }
+
   @override
   initState() {
     super.initState();
+    getSharedPref();
   }
 
   Future<FirebaseUser> _handleSignIn() async {

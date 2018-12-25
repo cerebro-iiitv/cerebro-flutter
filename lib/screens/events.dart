@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cerebro_flutter/models/record.dart';
 import 'package:cerebro_flutter/models/user.dart';
 import 'package:cerebro_flutter/utils/authManagement.dart';
@@ -78,8 +79,10 @@ class _EventsPageState extends State<EventsPage> {
         child: Card(
           elevation: 5.0,
           child: ListTile(
-            leading: Image.network(
-              _event.img,
+            leading: CachedNetworkImage(
+              imageUrl: _event.img,
+              placeholder: new CircularProgressIndicator(),
+              errorWidget: new Icon(Icons.error),
               width: 60,
               height: 60,
             ),

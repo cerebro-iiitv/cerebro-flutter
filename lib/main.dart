@@ -1,6 +1,7 @@
 import 'package:cerebro_flutter/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:cerebro_flutter/screens/events.dart';
+import 'package:cerebro_flutter/screens/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,6 +39,11 @@ class MyApp extends StatelessWidget {
           case '/events':
             return CustomRoute(
               builder: (_) => EventsPage(),
+              settings: settings,
+            );
+          case '/login':
+            return CustomRoute(
+              builder: (_) => LoginPage(),
               settings: settings,
             );
         }

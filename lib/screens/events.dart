@@ -1,20 +1,34 @@
 import 'package:cerebro_flutter/models/record.dart';
+import 'package:cerebro_flutter/utils/authManagement.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class EventsPage extends StatefulWidget {
   @override
-  _EventsPageState createState() {
-    return _EventsPageState();
-  }
+  _EventsPageState createState() => _EventsPageState();
 }
 
 class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Events List')),
+      appBar: AppBar(
+        title: Text('Events List'),
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: FlatButton(
+              onPressed: () {
+                AuthManager().signOut();
+                // Doing Pop and Push for the smooth closing animation
+                Navigator.of(context).popAndPushNamed('/login');
+              },
+              child: Text('Logout'),
+            ),
+          ),
+        ],
+      ),
       body: _buildBody(context),
     );
   }

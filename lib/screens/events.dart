@@ -1,4 +1,5 @@
 import 'package:cerebro_flutter/models/record.dart';
+import 'package:cerebro_flutter/models/user.dart';
 import 'package:cerebro_flutter/utils/authManagement.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,19 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+  User curUser;
+
+  @override
+  void initState() {
+    User user = AuthManager().getCurrentUser();
+    if (user != null) {
+      setState(() {
+        curUser = user;
+      });
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +94,9 @@ class _EventsPageState extends State<EventsPage> {
             trailing: IconButton(
               icon: Icon(Icons.add_circle_outline),
               iconSize: 30.0,
-              onPressed: () => print('Register for ${_event.name}'),
+              onPressed: () {
+                // TODO: using the event id, register the user
+              },
             ),
             onTap: () => print(_event),
           ),

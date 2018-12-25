@@ -10,6 +10,8 @@ class AuthManager {
   static FirebaseAuth _auth = FirebaseAuth.instance;
   static GoogleSignIn _googleSignIn = GoogleSignIn();
   static String _kUserPref = "UserPref";
+  // Static user so that single copy exists among all instances
+  static User _curUser;
 
   Future<FirebaseUser> signIn() async {
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -22,6 +24,7 @@ class AuthManager {
     assert(user != null);
     User _loggedInUser = User.fromFirebaseUser(user);
     print(_loggedInUser.toString());
+    _curUser = _loggedInUser;
 
     SharedPreferences pref = await SharedPreferences.getInstance();
     final response = await pref
@@ -41,7 +44,16 @@ class AuthManager {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.remove(_kUserPref);
     print('User removed');
+    _curUser = null;
     return _auth.signOut();
+  }
+
+  User getCurrentUser() {
+    return _curUser;
+  }
+
+  void setCurrentUser(User curUser) {
+    _curUser = curUser;
   }
 
 }

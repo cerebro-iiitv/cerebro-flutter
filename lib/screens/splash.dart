@@ -1,8 +1,11 @@
+import 'package:cerebro_flutter/models/user.dart';
 import 'package:cerebro_flutter/screens/login.dart';
 import 'package:cerebro_flutter/screens/events.dart';
+import 'package:cerebro_flutter/utils/authManagement.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'dart:convert';
 
 class Splash extends StatefulWidget {
   @override
@@ -20,6 +23,7 @@ class _SplashState extends State<Splash> {
     // and not to LoginPage
     if (userProfile != null) {
       print('Already present user: ' + userProfile);
+      AuthManager().setCurrentUser(User.fromMap(json.decode(userProfile)));
       setState(() {
         _routingWidget = EventsPage();
       });

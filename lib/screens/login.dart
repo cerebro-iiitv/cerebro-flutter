@@ -1,53 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cerebro_flutter/models/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-
-final GoogleSignIn _googleSignIn = GoogleSignIn();
-final FirebaseAuth _auth = FirebaseAuth.instance;
+import 'package:cerebro_flutter/utils/authManagement.dart';
 
 class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final String _kUserPref = "UserPref";
-
   @override
   initState() {
     super.initState();
   }
 
-  Future<FirebaseUser> _handleSignIn() async {
-    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    FirebaseUser user = await _auth.signInWithGoogle(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    print("signed in " + user.displayName);
-    assert(user != null);
-    User _loggedInUser = User.fromFirebaseUser(user);
-    print(_loggedInUser.toString());
-
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString(_kUserPref, json.encode(_loggedInUser.toJson())).then((_) {
-      print('Shared Preference saved');
-      Navigator.pushNamed(context, '/events');
-    }).catchError((_) {
-      print('Unable to save to sharedPreference');
-    });
-
-    return user;
+  Future<void> _handleSignIn() async {
+    FirebaseUser user = await AuthManager().signIn();
+    if (user != null) {
+      Navigator.of(context).pushReplacementNamed('/events');
+    }
   }
 
-  Future<void> signOut() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.remove(_kUserPref);
-    print('User removed');
-    return _auth.signOut();
+  Future<void> _handleSignOut() async {
+    AuthManager().signOut();
   }
 
   @override
@@ -85,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
                 child: Text('Logout'),
-                onPressed: () => signOut(),
+                onPressed: () => _handleSignOut(),
               ),
             ],
           ),
@@ -93,4 +66,5 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
+
 }

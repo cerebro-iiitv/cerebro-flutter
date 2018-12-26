@@ -7,6 +7,7 @@ class Event {
   final String description;
   final String img;
   final String prize;
+  final bool isTeam;
   final DocumentReference reference;
 
   Event.fromMap(Map<dynamic, dynamic> map, {this.reference})
@@ -16,6 +17,7 @@ class Event {
         name = map['name'],
         prize = map['prize'],
         img = map['img'],
+        isTeam = map['isTeam'],
         description = map['description'];
 
   Event.fromSnapshot(DocumentSnapshot snapshot)

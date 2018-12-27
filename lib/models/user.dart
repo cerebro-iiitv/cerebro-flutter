@@ -22,8 +22,8 @@ class User {
       name = map['name'],
       imgURL = map['imgURL'];
 
-  Map toJson() {
-    Map _userMap = Map();
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> _userMap = Map();
     _userMap['id'] = this.id;
     _userMap['name'] = this.name;
     _userMap['imgURL'] = this.imgURL;

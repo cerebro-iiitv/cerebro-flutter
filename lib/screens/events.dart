@@ -53,27 +53,30 @@ class _EventsPageState extends State<EventsPage> {
       appBar: AppBar(
         title: Text('Events List'),
         actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: FlatButton(
-              onPressed: () {
-                AuthManager().signOut();
-                // Doing Pop and Push for the smooth closing animation
-                Navigator.of(context).pushReplacementNamed('/login');
-              },
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: CircleAvatar(
-                      backgroundImage:
-                          CachedNetworkImageProvider(curUser.imgURL),
-                    ),
-                  ),
-                  Icon(Icons.exit_to_app),
-                ],
+          Row(
+            children: <Widget>[
+              GestureDetector(
+                child: CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(curUser.imgURL),
+                ),
+                onTap: () {
+                  // TODO: Implement Hero animation to go to Profile page
+                  print('Go to Profile');
+                },
+                onLongPress: () {},
               ),
-            ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: GestureDetector(
+                  child: Icon(Icons.exit_to_app, size: 30.0),
+                  onTap: () {
+                    AuthManager().signOut();
+                    // Doing Pop and Push for the smooth closing animation
+                    Navigator.of(context).pushReplacementNamed('/login');
+                  },
+                ),
+              )
+            ],
           ),
         ],
       ),

@@ -19,10 +19,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<void> _handleSignOut() async {
-    AuthManager().signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -49,16 +45,6 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(20.0)),
                 child: Text('Login with Google'),
                 onPressed: () => _handleSignIn(),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              OutlineButton(
-                borderSide: BorderSide(color: Colors.deepOrange),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: Text('Logout'),
-                onPressed: () => _handleSignOut(),
               ),
             ],
           ),

@@ -367,14 +367,26 @@ class _EventsPageState extends State<EventsPage> {
 
   // Handle Event Card Icon
   Widget _eventBtn(Event event) {
+    bool isRegistered;
     if (registeredEvents.containsKey(event.name)) {
       if (registeredEvents[event.name])
-        return Icon(Icons.delete_outline);
+        isRegistered = true;
       else
-        return Icon(Icons.add_circle_outline);
+        isRegistered = false;
     } else {
-      return Icon(Icons.add_circle_outline);
+      isRegistered = false;
     }
+    return AnimatedCrossFade(
+      firstChild: Icon(
+        Icons.add_circle_outline,
+      ),
+      secondChild: Icon(
+        Icons.delete_outline,
+      ),
+      crossFadeState:
+          isRegistered ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+      duration: Duration(milliseconds: 300),
+    );
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
@@ -416,10 +428,12 @@ class _EventsPageState extends State<EventsPage> {
                       if (_event.date.difference(DateTime.now()).inDays <= 2)
                         displaySnackBar(
                             context, "Cannot Unregister from " + _event.name);
-                      else
+                      else {
                         showUnregisterPrompt(_event, context);
-                    } else
+                      }
+                    } else {
                       handleEventReg(_event, context);
+                    }
                   } else {
                     handleEventReg(_event, context);
                   }

@@ -61,7 +61,18 @@ class _EventsPageState extends State<EventsPage> {
                 // Doing Pop and Push for the smooth closing animation
                 Navigator.of(context).pushReplacementNamed('/login');
               },
-              child: Text('Logout'),
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: CircleAvatar(
+                      backgroundImage:
+                          CachedNetworkImageProvider(curUser.imgURL),
+                    ),
+                  ),
+                  Icon(Icons.exit_to_app),
+                ],
+              ),
             ),
           ),
         ],

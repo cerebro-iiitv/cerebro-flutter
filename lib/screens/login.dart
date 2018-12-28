@@ -21,17 +21,26 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation currentOrientation = MediaQuery.of(context).orientation;
+    var iconHeight, _verticalPadding;
+    if (currentOrientation == Orientation.portrait) {
+      iconHeight = 150.0;
+      _verticalPadding = 110.0;
+    } else {
+      iconHeight = 120.0;
+      _verticalPadding = 80.0;
+    }
     return Stack(
       children: <Widget>[
         Container(
           padding: EdgeInsets.symmetric(
-            vertical: 120.0,
+            vertical: _verticalPadding,
             horizontal: 50.0,
           ),
           alignment: Alignment.topCenter,
           child: Image(
             image: AssetImage('assets/images/fest-logo.png'),
-            height: 150,
+            height: iconHeight,
           ),
         ),
         Center(
@@ -42,7 +51,8 @@ class _LoginPageState extends State<LoginPage> {
               OutlineButton(
                 borderSide: BorderSide(color: Colors.deepOrange),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
                 child: Text('Login with Google'),
                 onPressed: () => _handleSignIn(),
               ),
@@ -52,5 +62,4 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
-
 }

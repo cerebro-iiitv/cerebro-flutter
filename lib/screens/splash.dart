@@ -39,7 +39,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-        seconds: 7,
+        seconds: 4,
         navigateAfterSeconds: _routingWidget,
         title: Text(
           'Just wait a little longer...',
